@@ -1,20 +1,17 @@
+#hackerrank.com Counting Valley Challenge 
+#updated from forked file in Dec. 28, 2019
+
 import os
 import sys
 import time
 
-from os import system, name   
-def clear(): 
-    if name == 'nt': 
-        _ = system('cls')   
-    else: 
-        _ = system('clear') 
-
-def countingValleys(steps):
+# Complete the countingValleys function below.
+def countingValleys(n, s):
     altitude = 0
     valleyCount = 0
     valley = False
 
-    for step in steps:
+    for step in s:
         if step == "D":
             altitude-=1
             if altitude < 0 and valley == False:
@@ -27,31 +24,15 @@ def countingValleys(steps):
 
     return (valleyCount)
 
-print(r"""
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-        _    .  ,   .           .
-    *  / \_ *  / \_      _  *        *   /\'__        *
-      /    \  /    \,   ((        .    _/  /  \  *'.
- .   /\/\  /\/ :' __ \_  `          _^/  ^/    `--.
-    /    \/  \  _/  \-'\      *    /.' ^_   \_   .'\  *
-  /\  .-   `. \/     \ /==~=-=~=-=-;.  _/ \ -. `_/   \
- /  `-.__ ^   / .-'.--\ =-=~_=-=~=^/  _ `--./ .-'  `-
-/jgs     `.  / /       `.~-^=-=~=^=.-'      '-._ `._
+    n = int(input())
 
-Challenge: Counting Valleys
+    s = input()
 
-ASCII Artist: Joan Stark @ https://www.asciiart.eu/
-      
-  """)
+    result = countingValleys(n, s)
 
-time.sleep(5)
-clear() 
-time.sleep(2)
+    fptr.write(str(result) + '\n')
 
-steps = input("Input the string of steps taken with 'D' for down and 'U' for up. Leave no space in between: ")
-
-result = countingValleys(steps)
-
-print("\nThere were a total of " + str(result) + " valley(s).\n")
-
-time.sleep(10)
+    fptr.close()
